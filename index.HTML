@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Bibliothèque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>📚 MA BIBLIOTHÈQUE</h1>
+        <button id="btn-ouvrir-modal">Ajouter un livre</button>
+    </header>
+
+    <main>
+        <section class="filtres-container">
+            <input type="text" id="search-input" placeholder="Rechercher par titre ou auteur...">
+            <select id="category-filter">
+                <option value="tous">Toutes les catégories</option>
+            </select>
+        </section>
+
+        <section id="books-grid" class="books-grid">
+            </section>
+
+        <div id="pagination" class="pagination"></div>
+    </main>
+
+    <div id="book-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="btn-fermer-modal" class="close-btn">&times;</span>
+            <h2 id="modal-title">Ajouter un nouveau livre</h2>
+            
+            <form id="book-form">
+                <input type="hidden" id="book-id">
+
+                <label for="form-title">Titre du livre</label>
+                <input type="text" id="form-title" required placeholder="Ex: Sous L'orage">
+
+                <label for="form-author">Auteur</label>
+                <input type="text" id="form-author" required placeholder="Ex: Seydou Badian">
+
+                <label for="form-category">Catégorie</label>
+                <input type="text" id="form-category" required placeholder="Ex: Roman">
+
+                <label for="form-image">Lien Internet de l'image (URL)</label>
+                <input type="url" id="form-image" required placeholder="Ex: https://lien-vers-image.jpg">
+
+                <button type="submit" id="btn-soumettre-form">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

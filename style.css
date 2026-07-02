@@ -1,0 +1,238 @@
+/* --- Variables de Design --- */
+:root {
+    --bg-principal: #f8f9fa;
+    --bg-carte: #ffffff;
+    --texte-principal: #333333;
+    --texte-secondaire: #666666;
+    --couleur-accent: #111111; /* Boutons noirs/foncés comme sur la capture */
+    --couleur-tag: #e9ecef;
+    --police: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Styles Généraux --- */
+body {
+    font-family: var(--police);
+    background-color: var(--bg-principal);
+    color: var(--texte-principal);
+    margin: 0;
+    padding: 40px;
+}
+
+/* --- En-tête (Header) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button {
+    font-family: var(--police);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-ajouter-livre {
+    background-color: var(--couleur-accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#btn-ajouter-livre:hover {
+    background-color: #333;
+}
+
+/* --- Section Barre de Recherche & Filtres --- */
+.filtres-container {
+    display: flex;
+    gap: 20px;
+    background: var(--bg-carte);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 30px;
+}
+
+.filtres-container input, 
+.filtres-container select {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fafafa;
+    outline: none;
+}
+
+#search-input {
+    flex: 2;
+}
+
+#category-filter {
+    flex: 1;
+}
+
+/* --- Grille des Livres (Responsive) --- */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+    padding: 20px 0;
+}
+
+/* --- Carte d'un Livre --- */
+.book-card {
+    background: var(--bg-carte);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Permet de garder de bonnes proportions pour l'image */
+}
+
+.book-info {
+    padding: 15px;
+}
+
+.book-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.book-info p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: var(--texte-secondaire);
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--couleur-tag);
+    color: var(--texte-principal);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* --- Boutons d'Action de la Carte --- */
+.book-actions {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.book-actions button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+}
+
+.book-actions .btn-modifier {
+    color: #2f80ed;
+}
+
+.book-actions .btn-modifier:hover {
+    background-color: #ebf3fe;
+    border-color: #2f80ed;
+}
+
+.book-actions .btn-supprimer {
+    color: #eb5757;
+}
+
+.book-actions .btn-supprimer:hover {
+    background-color: #fdf0f0;
+    border-color: #eb5757;
+}
+
+/* --- Fenêtre Modale (Pop-up) --- */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: var(--bg-carte);
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--texte-secondaire);
+}
+
+#book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+#book-form input {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#book-form label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: -5px;
+}
+
+#btn-soumettre-form {
+    background-color: var(--couleur-accent);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+}
