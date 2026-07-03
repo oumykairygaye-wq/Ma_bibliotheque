@@ -90,12 +90,4 @@
         <image>brune.jpg</image>
     </book>
     
-    <book>
-        <title>Sous L'orage</title>
-        <author>Seydou Badian</author>
-        <category>œuvre</category>
-        <year>1957</year>
-        <price>4 500</price>
-        <image>couverture.jpg</image>
-    </book>
 </library>
