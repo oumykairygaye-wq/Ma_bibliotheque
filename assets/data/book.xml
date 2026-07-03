@@ -1,72 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library>
     <book>
+        <title>Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <category>COOKING</category>
+        <year>2005</year>
+        <price>8 530</price>
+        <image>dinner.jpg</image>
+    </book>
+    
+    <book>
+        <title>XQuery Kick Start</title>
+        <author>James McGovern, Per Bothner, Kurt Cagle, James Linn, Vaidyanathan Nagarajan</author>
+        <category>WEB</category>
+        <year>2003</year>
+        <price>21 042</price>
+        <image>livre.jpg</image>
+    </book>
+    
+    <book>
+        <title>La Russie selon Poutine</title>
+        <author>Anna Politkovskaia</author>
+        <category>POLITIQUE</category>
+        <year>2005</year>
+        <price>7 215</price>
+        <image>longue.jpg</image>
+    </book>
+    
+    <book>
+        <title>Calculabilité, complexité et langues</title>
+        <author>Martin Davis</author>
+        <category>COMPUTER</category>
+        <year>2017</year>
+        <price>36 397</price>
+        <image>photo.jpg</image>
+    </book>
+    
+    <book>
+        <title>Le livre de la salsa</title>
+        <author>César Rondón</author>
+        <category>DANSE/MUSIC</category>
+        <year>1979</year>
+        <price>22 958</price>
+        <image>reve.jpg</image>
+    </book>
+    
+    <book>
+        <title>Ô Mali ! Ô Ma patrie !</title>
+        <author>Oumar Aba Traoré</author>
+        <category>SOCIALE</category>
+        <year>2021</year>
+        <price>13 119</price>
+        <image>breathe.jpg</image>
+    </book>
+    
+    <book>
+        <title>Réseaux sans fil amateurs</title>
+        <author>Rob Flickenger</author>
+        <category>RESEAUX</category>
+        <year>2003</year>
+        <price>3 279</price>
+        <image>last.jpg</image>
+    </book>
+
+    <book>
+        <title>Droit du Travail au Mali</title>
+        <author>Daouda Ba</author>
+        <category>DROIT</category>
+        <year>2021</year>
+        <price>20 990</price>
+        <image>foria.jpg</image>
+    </book>
+
+    <book>
+        <title>The Monsters' Monster</title>
+        <author>Patrick McDonnell</author>
+        <category>ENFANTS</category>
+        <year>2012</year>
+        <price>13 119</price>
+        <image>coline.jpg</image>
+    </book>
+
+    <book>
+        <title>L'Histoire du football africain</title>
+        <author>Said El Abadi</author>
+        <category>SPORT</category>
+        <year>2025</year>
+        <price>14 431</price>
+        <image>brune.jpg</image>
+    </book>
+    
+    <book>
         <title>Sous L'orage</title>
         <author>Seydou Badian</author>
         <category>œuvre</category>
+        <year>1957</year>
+        <price>4 500</price>
         <image>couverture.jpg</image>
-    </book>
-    <book>
-        <title>XQuery</title>
-        <author>Priscilla Walmsley</author>
-        <category>Informatique</category>
-        <image>livre.jpg</image>
-    </book>
-    <book>
-        <title>Une si longue lettre</title>
-        <author>Mariama Bâ</author>
-        <category>Roman</category>
-        <image>longue.jpg</image>
-    </book>
-    <book>
-        <title>L'Étranger</title>
-        <author>Albert Camus</author>
-        <category>Roman</category>
-        <image>photo.jpg</image>
-    </book>
-    <book>
-        <title>Dans mes reves</title>
-        <author>Pascal</author>
-        <category>Roman</category>
-        <image>reve.jpg</image>
-    </book>
-    <book>
-        <title>Breathe</title>
-        <author>Bauld</author>
-        <category>Roman</category>
-        <image>breathe.jpg</image>
-    </book>
-    <book>
-        <title>Last</title>
-        <author>Romain</author>
-        <category>Roman</category>
-        <image>last.jpg</image>
-    </book><book>
-        <title>Foria</title>
-        <author>Pascal</author>
-        <category>Roman</category>
-        <image>foria.jpg</image>
-    </book><book>
-        <title>Coline</title>
-        <author>Pascal</author>
-        <category>Roman</category>
-        <image>coline.jpg</image>
-    </book><book>
-        <title>Brune</title>
-        <author>Pascal</author>
-        <category>Roman</category>
-        <image>brune.jpg</image>
-    </book>
-    </book><book>
-        <title>Dinner</title>
-        <author>Henry Kane</author>
-        <category>Roman</category>
-        <image>dinner.jpg</image>
-    </book>
-    </book><book>
-        <title>Caught</title>
-        <author>Pascal</author>
-        <category>Roman</category>
-        <image>caught.jpg</image>
     </book>
 </library>

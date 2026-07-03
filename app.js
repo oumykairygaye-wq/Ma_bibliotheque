@@ -2,18 +2,15 @@ let livres = [];
 let pageCourante = 1;
 const maxParPage = 8; 
 
-
 const booksGrid = document.getElementById('books-grid');
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
 const paginationContainer = document.getElementById('pagination');
 
-
 const bookModal = document.getElementById('book-modal');
 const bookForm = document.getElementById('book-form');
 const btnOuvrirModal = document.getElementById('btn-ouvrir-modal');
 const btnFermerModal = document.getElementById('btn-fermer-modal');
-
 
 document.addEventListener('DOMContentLoaded', () => {
     chargerFichierXML();
@@ -21,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function chargerFichierXML() {
-    
     fetch('assets/data/book.xml')
         .then(response => {
             if (!response.ok) throw new Error("Fichier XML introuvable");
@@ -43,10 +39,12 @@ function extraireLivresDuXML(xmlDoc) {
     
     for (let i = 0; i < balises.length; i++) {
         livres.push({
-            id: 'id-' + Date.now() + '-' + i, // Génération d'un ID unique pour le CRUD
+            id: 'id-' + Date.now() + '-' + i, // ID unique pour le CRUD
             titre: balises[i].getElementsByTagName('title')[0]?.textContent || 'Sans titre',
             auteur: balises[i].getElementsByTagName('author')[0]?.textContent || 'Inconnu',
             categorie: balises[i].getElementsByTagName('category')[0]?.textContent || 'Général',
+            annee: balises[i].getElementsByTagName('year')[0]?.textContent || 'N/A', // Extraction de l'année
+            prix: balises[i].getElementsByTagName('price')[0]?.textContent || '0', // Extraction du prix
             image: balises[i].getElementsByTagName('image')[0]?.textContent || 'couverture.jpg'
         });
     }
@@ -69,9 +67,7 @@ function genererCategoriesDansLeMenu() {
     });
 }
 
-
-// LE MOTEUR DE L'APPLICATION (Filtres, Pagination, Affichage)
-
+// Filtres, Pagination, Affichage
 function mettreAJourInterface() {
     const livresFiltrés = filtrerLesLivres();
     const livresDeLaPage = decouperParPage(livresFiltrés, pageCourante);
@@ -107,7 +103,6 @@ function dessinerLaGrille(livresAAfficher) {
     }
 
     livresAAfficher.forEach(livre => {
-        // Le chemin pointe à coup sûr vers ton dossier assets/images/
         let sourceImage = `assets/images/${livre.image}`;
 
         booksGrid.innerHTML += `
@@ -115,10 +110,12 @@ function dessinerLaGrille(livresAAfficher) {
                 <img src="${sourceImage}" 
                      alt="${livre.titre}" 
                      style="width: 100%; height: 280px; object-fit: cover; display: block;"
-                     onerror="this.src='https://via.placeholder.com/240x300?text=Image+Introuvable'">
+                     onerror="this.src='assets/images/couverture.jpg'">
                 <div class="book-info">
                     <h3>${livre.titre}</h3>
                     <p><strong>Auteur :</strong> ${livre.auteur}</p>
+                    <p><strong>Année :</strong> ${livre.annee}</p>
+                    <p><strong>Prix :</strong> ${livre.prix} FCFA</p>
                     <p><strong>Catégorie :</strong> <span class="tag">${livre.categorie}</span></p>
                 </div>
                 <div class="book-actions">
@@ -156,9 +153,9 @@ function dessinerLaPagination(totalLivres) {
     }
 }
 
-// =========================================================================
+// 
 // LES OPÉRATIONS DU CRUD (Create, Update, Delete)
-// =========================================================================
+// 
 function ouvrirModalAjout() {
     document.getElementById('modal-title').textContent = "Ajouter un livre";
     bookForm.reset();
@@ -176,6 +173,10 @@ window.ouvrirModalModification = function(id) {
     document.getElementById('form-author').value = livre.auteur;
     document.getElementById('form-category').value = livre.categorie;
     document.getElementById('form-image').value = livre.image; 
+    
+    
+    if(document.getElementById('form-year')) document.getElementById('form-year').value = livre.annee;
+    if(document.getElementById('form-price')) document.getElementById('form-price').value = livre.prix;
 
     bookModal.classList.remove('hidden');
 }
@@ -188,7 +189,9 @@ function sauvegarderLivre(event) {
         titre: document.getElementById('form-title').value.trim(),
         auteur: document.getElementById('form-author').value.trim(),
         categorie: document.getElementById('form-category').value.trim(),
-        image: document.getElementById('form-image').value.trim() || 'couverture.jpg'
+        image: document.getElementById('form-image').value.trim() || 'couverture.jpg',
+        annee: document.getElementById('form-year')?.value.trim() || new Date().getFullYear().toString(),
+        prix: document.getElementById('form-price')?.value.trim() || '0'
     };
 
     if (idActuel) {
@@ -196,15 +199,12 @@ function sauvegarderLivre(event) {
         const index = livres.findIndex(l => l.id === idActuel);
         if (index !== -1) {
             livres[index] = { id: idActuel, ...donnees };
-            // --- MESSAGE DE SUCCÈS POUR LA MODIFICATION ---
             alert(`Le livre "${donnees.titre}" a été modifié avec succès !`);
         }
     } else {
         // MODE AJOUT (Create)
         const nouvelId = 'id-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         livres.push({ id: nouvelId, ...donnees });
-        
-        // --- MESSAGE DE SUCCÈS POUR L'AJOUT ---
         alert(`Le livre "${donnees.titre}" a été ajouté avec succès ! 🎉`);
     }
 
@@ -220,7 +220,6 @@ window.supprimerUnLivre = function(id) {
         mettreAJourInterface();
     }
 }
-
 
 function configurerEcouteurs() {
     searchInput.addEventListener('input', () => { pageCourante = 1; mettreAJourInterface(); });
