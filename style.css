@@ -1,15 +1,15 @@
-/* --- Variables de Design --- */
+
 :root {
     --bg-principal: #f8f9fa;
     --bg-carte: #ffffff;
     --texte-principal: #333333;
     --texte-secondaire: #666666;
-    --couleur-accent: #111111; /* Boutons noirs/foncés comme sur la capture */
+    --couleur-accent: #111111; 
     --couleur-tag: #e9ecef;
     --police: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* --- Styles Généraux --- */
+
 body {
     font-family: var(--police);
     background-color: var(--bg-principal);
@@ -18,7 +18,7 @@ body {
     padding: 40px;
 }
 
-/* --- En-tête (Header) --- */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -109,7 +109,7 @@ button {
 .book-card img {
     width: 100%;
     height: 300px;
-    object-fit: cover; /* Permet de garder de bonnes proportions pour l'image */
+    object-fit: cover; 
 }
 
 .book-info {
@@ -138,7 +138,6 @@ button {
     font-weight: 600;
 }
 
-/* --- Boutons d'Action de la Carte --- */
 .book-actions {
     display: flex;
     gap: 10px;

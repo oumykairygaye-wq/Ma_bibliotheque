@@ -1,32 +1,27 @@
-// =========================================================================
-// 1. VARIABLES GLOBALES ET SÉLECTEURS DOM
-// =========================================================================
 let livres = []; 
 let pageCourante = 1;
-const maxParPage = 8; // Contrainte du barème : 8 livres par page
+const maxParPage = 8; 
 
-// Éléments de l'interface principale
+
 const booksGrid = document.getElementById('books-grid');
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
 const paginationContainer = document.getElementById('pagination');
 
-// Éléments de la fenêtre modale (Formulaire)
+
 const bookModal = document.getElementById('book-modal');
 const bookForm = document.getElementById('book-form');
 const btnOuvrirModal = document.getElementById('btn-ouvrir-modal');
 const btnFermerModal = document.getElementById('btn-fermer-modal');
 
-// =========================================================================
-// 2. DÉMARRAGE ET LECTURE DU FICHIER XML
-// =========================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
     chargerFichierXML();
-    configurerEcouteurs(); // Active la recherche et les boutons
+    configurerEcouteurs(); 
 });
 
 function chargerFichierXML() {
-    // Le chemin correspond exactement à ton dossier assets/data/book.xml
+    
     fetch('assets/data/book.xml')
         .then(response => {
             if (!response.ok) throw new Error("Fichier XML introuvable");
@@ -39,7 +34,7 @@ function chargerFichierXML() {
         })
         .catch(err => {
             console.error("Erreur de chargement du XML :", err);
-            initAppVide(); // Démarre avec une bibliothèque vide si le XML échoue
+            initAppVide(); 
         });
 }
 
@@ -74,9 +69,9 @@ function genererCategoriesDansLeMenu() {
     });
 }
 
-// =========================================================================
-// 3. LE MOTEUR DE L'APPLICATION (Filtres, Pagination, Affichage)
-// =========================================================================
+
+// LE MOTEUR DE L'APPLICATION (Filtres, Pagination, Affichage)
+
 function mettreAJourInterface() {
     const livresFiltrés = filtrerLesLivres();
     const livresDeLaPage = decouperParPage(livresFiltrés, pageCourante);
@@ -162,7 +157,7 @@ function dessinerLaPagination(totalLivres) {
 }
 
 // =========================================================================
-// 4. LES OPÉRATIONS DU CRUD (Create, Update, Delete)
+// LES OPÉRATIONS DU CRUD (Create, Update, Delete)
 // =========================================================================
 function ouvrirModalAjout() {
     document.getElementById('modal-title').textContent = "Ajouter un livre";
@@ -226,9 +221,7 @@ window.supprimerUnLivre = function(id) {
     }
 }
 
-// =========================================================================
-// 5. CONFIGURATION DES ÉCOUTEURS D'ÉVÉNEMENTS
-// =========================================================================
+
 function configurerEcouteurs() {
     searchInput.addEventListener('input', () => { pageCourante = 1; mettreAJourInterface(); });
     categoryFilter.addEventListener('change', () => { pageCourante = 1; mettreAJourInterface(); });
